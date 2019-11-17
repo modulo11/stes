@@ -66,6 +66,24 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>1.8.0</version>
+                <configuration>
+                    <to>
+                        <image>modulo11/${project.artifactId}</image>
+                    </to>
+                    <container>
+                        <user>nonroot:nonroot</user>
+                        <jvmFlags>
+                            <jvmFlag>-Dspring.devtools.restart.enabled=false</jvmFlag>
+                            <jvmFlag>-Dspring.devtools.add-properties=false</jvmFlag>
+                        </jvmFlags>
+                    </container>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
